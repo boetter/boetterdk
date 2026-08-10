@@ -12,7 +12,7 @@ Statisk site — ren HTML/CSS, ingen build-proces, ingen JavaScript.
 - `favicon.svg`, `apple-touch-icon.png` — ikoner
 - `assets/og-image.jpg` — delingsbillede til sociale medier (1200×630)
 - `404.html`, `robots.txt`
-- `design_handoff_landingpage/` — det oprindelige designoplæg (reference, deployes ikke)
+- `design_handoff_landingpage/` — det oprindelige designoplæg. Deployes med, hvis hele repo-roden serveres (fx GitHub Pages), men er undtaget fra søgeindeksering via `robots.txt`. Kan slettes fra `main`, hvis den ikke skal være offentligt tilgængelig.
 
 ## Lancering
 
