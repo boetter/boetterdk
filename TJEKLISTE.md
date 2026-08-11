@@ -4,15 +4,22 @@ To ting mangler, før sitet går live: nogle **fakta skal bekræftes**, og nogle
 
 ## 1. Fakta, der skal bekræftes
 
-Alt herunder står nu på siden. Intet af det er efterprøvet af andre end research — bekræft, ret eller slet.
+Bogårstallene er dine egne fra rettelsen af bogreolen, og meritlinjen bygger på dine tal. Tilbage står:
 
 | Hvor | Påstand | Status |
 | --- | --- | --- |
-| Hero, meritlinjen | „500+ foredrag · Tusindvis undervist i at bruge AI · 100+ virksomheder rådgivet“ | Dine egne tal fra kommentaren — bekræft de præcise størrelser |
-| Bogreol, faktalinjen | NQ (2010) · Unboss (2012, med Lars Kolind — også på engelsk) · Fuck It, Ship It (med Stine Mølgaard) · Udefra (2014) · No-Code (2021) | Årstal og medforfattere stammer fra forlags- og boghandlersider |
-| JSON-LD | ISBN: Unboss 9788740007053 · Fuck It, Ship It 9788797083413 · No-Code 9788797083499 | Fra boghandlerlisteringer. NQ og Udefra står uden ISBN |
+| Hero, meritlinjen | „500+ foredrag · Tusindvis undervist i at bruge AI · 100+ virksomheder rådgivet“ | Du foreslog tallene selv, men med spørgsmålstegn — sig god for de præcise størrelser |
+| JSON-LD | ISBN: Unboss 9788740007053 · Fuck It, Ship It 9788797083413 · No-Code 9788797083499 | Eneste tal, der stadig stammer fra research. NQ og Udefra står uden ISBN |
 
-Bemærk: udsagnet om, at du er ekstern lektor, og at du har rådgivet to statsministre, er **ikke** kommet på siden, jf. din kommentar.
+To ting er bevidst holdt ude, jf. dine kommentarer: at du er ekstern lektor, og at du har rådgivet to statsministre. Medforfatterne (Lars Kolind, Stine Mølgaard) står heller ikke længere på siden.
+
+**Ét spørgsmål:** heroen nævner ikke længere bogens titel („den sjette, om AI“), men 10x-omslaget i reolen gør. Er titlen ikke endelig, bør omslaget rettes med — sig til, så laver jeg det om.
+
+## 1b. NQ-omslaget mangler som fil
+
+Billedet i `assets/bog-nq.jpg` er et **beskåret udsnit** af coveret: den øverste bjælke med citatet og „Forord af Lars Kolind“ er væk, og figuren nederst er skåret over. Derfor står bogen for bred i reolen (forhold 0,86 mod de øvrige bøgers ca. 0,68), og det kan ikke rettes ved at beskære mere.
+
+Læg det fulde omslag i repoet som `assets/bog-nq.jpg` — det, du sendte i chatten, er det rigtige. Så kører jeg `node tools/build-images.js`, opdaterer målene i `index.html` og bogen står korrekt.
 
 ## 2. Links, der ikke kunne testes herfra
 

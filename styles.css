@@ -278,14 +278,59 @@ a:hover { color: #F9C99B; }
   padding: 0 clamp(8px, 2vw, 24px) 2px;
 }
 
+/* Hver bog har sin egen bevægelse, som om den blev taget ned af hylden på
+   hver sin måde. Grundstillingen er den skæve rotation, --tilt sætter. */
 .book {
   display: block;
   position: relative;
   transform: rotateY(var(--tilt, 0deg));
   transform-style: preserve-3d;
-  transition: transform 0.4s ease;
+  transform-origin: 50% 100%;
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
-.book:hover { transform: rotateY(0deg) translateY(-12px); }
+
+/* --loeftehoejde bruges to steder: bogen løftes med den, og gulvskyggen
+   skubbes tilsvarende ned, så den bliver liggende på hylden. */
+.book--traek { --loeftehoejde: 16px; }
+.book--vip { --loeftehoejde: 6px; }
+.book--frem { --loeftehoejde: 8px; }
+.book--loeft { --loeftehoejde: 24px; }
+.book--pop { --loeftehoejde: 10px; }
+
+/* trækkes lige ud af reolen */
+.book--traek:hover,
+.book--traek:focus-visible { transform: rotateY(0deg) translateY(calc(var(--loeftehoejde) * -1)); }
+
+/* vippes bagud, som når man læser ryggen */
+.book--vip:hover,
+.book--vip:focus-visible { transform: rotateY(0deg) rotateX(11deg) translateY(calc(var(--loeftehoejde) * -1)); }
+
+/* springer frem mod læseren */
+.book--frem:hover,
+.book--frem:focus-visible { transform: rotateY(0deg) translateY(calc(var(--loeftehoejde) * -1)) translateZ(120px); }
+
+/* løftes højest af dem alle */
+.book--loeft:hover,
+.book--loeft:focus-visible { transform: rotateY(0deg) translateY(calc(var(--loeftehoejde) * -1)); }
+
+/* retter sig op og vokser en anelse */
+.book--pop:hover,
+.book--pop:focus-visible { transform: rotateY(0deg) translateY(calc(var(--loeftehoejde) * -1)) scale(1.05); }
+
+.book:hover > .book-floor-shadow,
+.book:focus-visible > .book-floor-shadow {
+  transform: translateY(var(--loeftehoejde, 0px));
+  opacity: 0.7;
+}
+
+/* den kommende bog sitrer utålmodigt */
+.book--sitre:hover { animation: sitre 0.6s ease-in-out; }
+
+@keyframes sitre {
+  0%, 100% { transform: rotateY(var(--tilt, 0deg)); }
+  25% { transform: rotateY(var(--tilt, 0deg)) rotate(2deg) translateY(-4px); }
+  75% { transform: rotateY(var(--tilt, 0deg)) rotate(-2deg) translateY(-4px); }
+}
 
 .book picture { display: block; }
 
@@ -313,15 +358,8 @@ a:hover { color: #F9C99B; }
   bottom: -9px;
   height: 14px;
   background: radial-gradient(ellipse at 50% 50%, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 70%);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.45s ease;
 }
-
-.book--leaning {
-  transform: rotate(-8deg) rotateY(5deg);
-  transform-origin: 100% 100%;
-  margin-left: clamp(6px, 1vw, 14px);
-  margin-right: clamp(-6px, -0.5vw, -2px);
-}
-.book--leaning:hover { transform: rotate(-8deg) rotateY(0deg) translateY(-10px); }
 
 .cover-upcoming {
   height: clamp(150px, 17vw, 230px);
@@ -426,8 +464,11 @@ a:hover { color: #F9C99B; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .btn, .book { transition: none; }
+  .btn, .book, .book-floor-shadow { transition: none; }
   .btn:hover { transform: none; }
-  .book:hover { transform: rotateY(var(--tilt, 0deg)); }
-  .book--leaning:hover { transform: rotate(-8deg) rotateY(5deg); }
+  .book:hover,
+  .book:focus-visible { transform: rotateY(var(--tilt, 0deg)); }
+  .book:hover > .book-floor-shadow,
+  .book:focus-visible > .book-floor-shadow { transform: none; opacity: 1; }
+  .book--sitre:hover { animation: none; }
 }
