@@ -21,7 +21,7 @@ Statisk site — ren HTML/CSS, ingen JavaScript på siden selv. Byggeskridtet er
 
 `.github/workflows/deploy.yml` bygger og udgiver sitet, hver gang der pushes til `main`. Byggeskridtet (`tools/build-site.js`) gør to ting: det kopierer **kun** produktionsfilerne til `_site/`, så arbejdsmateriale aldrig havner på et offentligt domæne, og det skriver `styles.css` ind i `index.html`, så forsiden kan tegnes uden at hente et ekstra stylesheet.
 
-Engangsopsætning i GitHub: **Settings → Pages → Source → GitHub Actions**, og peg `boetter.dk` på GitHub Pages.
+Workflowet slår selv Pages til og sætter kilden til Actions første gang, det kører. Tilbage står kun at pege `boetter.dk` på GitHub Pages under **Settings → Pages → Custom domain**.
 
 Ligger sitet på et andet domæne end `boetter.dk`, skal `canonical`, `og:url`, `og:image`, URL'erne i JSON-LD og `sitemap.xml` rettes tilsvarende.
 

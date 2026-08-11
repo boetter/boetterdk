@@ -15,11 +15,6 @@ To ting er bevidst holdt ude, jf. dine kommentarer: at du er ekstern lektor, og 
 
 **Ét spørgsmål:** heroen nævner ikke længere bogens titel („den sjette, om AI“), men 10x-omslaget i reolen gør. Er titlen ikke endelig, bør omslaget rettes med — sig til, så laver jeg det om.
 
-## 1b. NQ-omslaget mangler som fil
-
-Billedet i `assets/bog-nq.jpg` er et **beskåret udsnit** af coveret: den øverste bjælke med citatet og „Forord af Lars Kolind“ er væk, og figuren nederst er skåret over. Derfor står bogen for bred i reolen (forhold 0,86 mod de øvrige bøgers ca. 0,68), og det kan ikke rettes ved at beskære mere.
-
-Læg det fulde omslag i repoet som `assets/bog-nq.jpg` — det, du sendte i chatten, er det rigtige. Så kører jeg `node tools/build-images.js`, opdaterer målene i `index.html` og bogen står korrekt.
 
 ## 2. Links, der ikke kunne testes herfra
 
@@ -33,8 +28,10 @@ Sessionens netværkspolitik blokerer udgående kald til de her domæner, så de 
 
 ## 3. Handlinger uden for koden
 
-### Skift GitHub Pages til Actions
-Sitet bygges nu af `.github/workflows/deploy.yml`, som kun udgiver produktionsfilerne. Derfor: **Settings → Pages → Source → GitHub Actions** (i stedet for „Deploy from a branch“). Uden det skifte deployes repoet stadig råt, og designoplægget ligger offentligt.
+### Peg domænet på Pages
+Sitet bygges af `.github/workflows/deploy.yml`, som kun udgiver produktionsfilerne. Workflowet slår selv Pages til og sætter kilden til Actions, så der mangler kun at pege `boetter.dk` derhen under **Settings → Pages → Custom domain**.
+
+De to første kørsler fejlede, fordi Pages endnu ikke var slået til på repoet. Det er årsagen til fejlen `Get Pages site failed` i Actions-fanen — den forsvinder med denne ændring.
 
 ### Ryd op i økosystemet
 - **`foredrag.boetter.dk`** — gammel foredragsside, stadig indekseret og kun på HTTP. Sæt en redirect til `boetter.dk`, så de to sider ikke konkurrerer på „Jacob Bøtter foredrag“.
