@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://boetter.dk/sitemap.xml
+Sitemap: https://jacob.boetter.dk/sitemap.xml

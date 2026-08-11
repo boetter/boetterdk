@@ -28,10 +28,10 @@ Sessionens netværkspolitik blokerer udgående kald til de her domæner, så de 
 
 ## 3. Handlinger uden for koden
 
-### Peg domænet på Pages
-Sitet bygges af `.github/workflows/deploy.yml`, som kun udgiver produktionsfilerne. Workflowet slår selv Pages til og sætter kilden til Actions, så der mangler kun at pege `boetter.dk` derhen under **Settings → Pages → Custom domain**.
+### Sæt byggekommandoen i Netlify
+Repoet har nu en `netlify.toml` med kommandoen `node tools/build-site.js` og `_site` som output. Tjek i Netlify (**Site configuration → Build & deploy**), at der ikke står en anden kommando eller publish-mappe i UI'et — indstillinger i UI'et vinder over filen.
 
-De to første kørsler fejlede, fordi Pages endnu ikke var slået til på repoet. Det er årsagen til fejlen `Get Pages site failed` i Actions-fanen — den forsvinder med denne ændring.
+Indtil det er på plads, udgiver Netlify hele repo-roden. Så er `/design_handoff_landingpage/`, `/tools/` og dokumentationen offentligt tilgængelige, og `styles.css` hentes som separat fil.
 
 ### Ryd op i økosystemet
 - **`foredrag.boetter.dk`** — gammel foredragsside, stadig indekseret og kun på HTTP. Sæt en redirect til `boetter.dk`, så de to sider ikke konkurrerer på „Jacob Bøtter foredrag“.
