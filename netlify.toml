@@ -1,0 +1,13 @@
+# Netlify bygger sitet med tools/build-site.js og udgiver kun mappen _site.
+#
+# Uden det her udgiver Netlify hele repo-roden — altså også designoplægget,
+# tools/ og dokumentationen — og styles.css bliver ikke skrevet ind i
+# index.html. Byggeskridtet har ingen afhængigheder, så der skal ikke
+# installeres noget først.
+
+[build]
+  command = "node tools/build-site.js"
+  publish = "_site"
+
+[build.environment]
+  NODE_VERSION = "22"

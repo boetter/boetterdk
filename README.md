@@ -19,11 +19,11 @@ Statisk site — ren HTML/CSS, ingen JavaScript på siden selv. Byggeskridtet er
 
 ## Udgivelse
 
-`.github/workflows/deploy.yml` bygger og udgiver sitet, hver gang der pushes til `main`. Byggeskridtet (`tools/build-site.js`) gør to ting: det kopierer **kun** produktionsfilerne til `_site/`, så arbejdsmateriale aldrig havner på et offentligt domæne, og det skriver `styles.css` ind i `index.html`, så forsiden kan tegnes uden at hente et ekstra stylesheet.
+Sitet hostes på Netlify og bygges efter `netlify.toml`: kommandoen `node tools/build-site.js` og mappen `_site` som output. Byggeskridtet gør to ting — det kopierer **kun** produktionsfilerne, så designoplæg, `tools/` og dokumentation aldrig havner på et offentligt domæne, og det skriver `styles.css` ind i `index.html`, så forsiden kan tegnes uden at hente et ekstra stylesheet.
 
-Engangsopsætning i GitHub: **Settings → Pages → Source → GitHub Actions**, og peg `boetter.dk` på GitHub Pages.
+Byggeskridtet har ingen afhængigheder; Netlify skal ikke installere noget først. Fejler et deploy, ligger fejlen derfor i `tools/build-site.js` — typisk fordi stylesheet-linket i `index.html` er ændret, hvilket scriptet med vilje stopper på.
 
-Ligger sitet på et andet domæne end `boetter.dk`, skal `canonical`, `og:url`, `og:image`, URL'erne i JSON-LD og `sitemap.xml` rettes tilsvarende.
+Sitets adresse er `jacob.boetter.dk`, og den står i `canonical`, `og:url`, `og:image`, URL'erne i JSON-LD, `sitemap.xml` og `robots.txt`. Flytter sitet til et andet domæne, skal alle de steder rettes med.
 
 Byg lokalt med `node tools/build-site.js` og server `_site/`.
 
