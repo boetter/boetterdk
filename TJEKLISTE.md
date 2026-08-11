@@ -20,10 +20,9 @@ Sessionens netværkspolitik blokerer udgående kald til de her domæner, så de 
 
 - `heutedenkenmorgenfertig.com` — rådgivningslinket peger på **forsiden**. Har rådgivningssiden sin egen URL, så send den, og linket rettes.
 - `unboss.com`, `udefrabog.dk`, `nocodehandbook.com` — bogomslagene linker hertil.
+- `bibliotek.dk` — NQ og Fuck It, Ship It linker til katalogsiderne. Sporingsparameteren (`tid=…`) i den ene adresse er fjernet, så linket ikke bærer en session med sig; tjek at begge sider stadig svarer.
 - `dagligprompt.boetter.dk` — linket i kontaktsektionen.
 - `highperformance.dk/foredragsholdere/jacob-boetter/` — begge „Book et foredrag“-knapper.
-
-**NQ og Fuck It, Ship It er ikke klikbare endnu.** Du var i tvivl om, hvor de skulle pege hen. Send en adresse (bogens eget site eller en boghandler), så kobles de på — indtil da står de som ren illustration.
 
 ## 3. Handlinger uden for koden
 
