@@ -424,6 +424,10 @@ a:hover { color: #F9C99B; }
   color: #8A8177;
 }
 
+/* Hver titel holdes samlet med sit årstal og sin skilleprik, så linjen
+   knækker mellem bøgerne og ikke midt i en titel. */
+.books-titles span { white-space: nowrap; }
+
 /* ---------- Kontakt ---------- */
 
 .contact { padding-top: clamp(72px, 14vh, 150px); padding-bottom: clamp(72px, 14vh, 150px); }
@@ -445,6 +449,15 @@ a:hover { color: #F9C99B; }
   gap: clamp(18px, 2.5vw, 36px);
 }
 
+/* Email og telefon holdes samlet, så de på små skærme kan rykke ned
+   under knappen som ét par i stedet for at knække hver for sig. */
+.contact-direct {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: clamp(18px, 2.5vw, 36px);
+}
+
 .contact-link {
   font-family: 'Newsreader', serif;
   font-style: italic;
@@ -459,6 +472,30 @@ a:hover { color: #F9C99B; }
 }
 
 .contact-extra .link-underline { font-size: 15px; }
+
+/* ---------- Telefoner ----------
+   Resten af sitet klarer sig med clamp() og auto-fit, men to steder skal
+   layoutet træffe et valg, der ikke kan udtrykkes flydende. */
+
+@media (max-width: 520px) {
+  /* Kontakt-linket vige pladsen, så eyebrow'ens tre ord kan stå på én linje.
+     Kontaktsektionen er stadig ét scroll væk og fylder hele sidens bund. */
+  .topbar-link { display: none; }
+
+  /* Teksten skal bruge 307px ved 12px. Under ca. 355px viewport er der ikke
+     plads, heller ikke uden linket, så den skaleres let ned i stedet for at
+     knække midt i "Undervisning". */
+  .topbar .eyebrow {
+    font-size: clamp(10.5px, 3vw, 12px);
+    letter-spacing: 0.14em;
+  }
+
+  /* Knappen får sin egen linje, og email og telefon står sammen under den. */
+  .contact-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
 
 /* ---------- Reduceret bevægelse ---------- */
 
